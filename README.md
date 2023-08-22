@@ -1,6 +1,8 @@
 Angular Star-food Application
 This project is an enhanced Star Food application built using Angular, incorporating additional features. It also integrates server-side data management through Firebase. With this project, you can conveniently monitor your orders and easily generate order receipts for printing purposes.
 
+![Uploading Screenshot from 2023-08-22 12-04-24.png…]()
+
 
 Prerequisites
 Node.js must be installed on your system.
