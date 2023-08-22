@@ -1,0 +1,275 @@
+<div style="display: flex; width: 100%">
+  <div class="order-page">
+    <div class="create-order">
+      <div class="d-flex align-items-center">
+        <div style="display: flex; align-items: center">
+          <img
+            src="../../../assets/Group-21.svg"
+            alt="svg-11"
+            width="18"
+            height="17"
+          />
+          <div
+            style="
+              font-size: 25px;
+              font-weight: 500;
+              line-height: 36px;
+              letter-spacing: 0em;
+              text-align: left;
+              margin-left: 22px;
+            "
+          >
+            Create Order
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 30px">
+        <div class="custom-style" style="margin-bottom: 10px; font-weight: 500">
+          <span type="number">Order Number :</span>
+          <span>{{ this.formData.orderNumber }}</span>
+        </div>
+        <div class="custom-style">
+          <span>Date&Time:</span>
+          <span>{{ this.formData.createdAt }}</span>
+        </div>
+      </div>
+      <div class="d-flex flex-column">
+        <form [formGroup]="checkForm" class="form-container">
+          <label style="margin-bottom: 5px">Name</label>
+          <input
+            type="text"
+            placeholder="Name"
+            matInput
+            formControlName="name"
+            style="height: 50px; width: 100%; font-weight: 440"
+          />
+        </form>
+
+        <form [formGroup]="checkForm" class="form-container">
+          <label style="margin-bottom: 5px">Contact</label>
+          <input
+            type="text"
+            placeholder="Contact"
+            matInput
+            formControlName="contact"
+            style="height: 50px; width: 100%; font-weight: 440"
+          />
+        </form>
+      </div>
+      <div class="form-group" id="transType" style="margin-top: 15px">
+        <label style="font-size: 23px">Trans Type</label>
+        <div class="mb-3 fw-normal" style="margin-top: 15px">
+          <ng-container *ngFor="let label of transLabels; let index = index">
+            <label
+              class="form-check-inline"
+              style="margin-right: 10px; font-weight: 440; margin-right: 155px"
+            >
+              <input
+                type="radio"
+                name="type"
+                [value]="label"
+                [ngModel]="selectedType"
+                (ngModelChange)="selectedType = label"
+                [checked]="label === selectedType"
+              />
+              {{ label }}
+            </label>
+          </ng-container>
+        </div>
+      </div>
+      <div style="margin-top: 15px">
+        <label for="floatingTextarea2">Message to Client</label>
+        <div class="custom-style">
+          <ng-container matFormFieldFloatLabel>
+            <textarea
+              matInput
+              id="floatingTextarea2"
+              placeholder="Leave a comment here"
+              style="
+                height: 6em;
+                width: 100%;
+                font-weight: 440;
+                border-radius: 5px;
+              "
+              name="message"
+              [(ngModel)]="formData.message"
+              (ngModelChange)="handleInputChange()"
+            ></textarea>
+          </ng-container>
+        </div>
+      </div>
+
+      <label style="margin-top: 15px" for="floatingTextarea2">Order Item</label>
+      <mat-form-field
+       class="order-items1"
+      >
+        <mat-label >Order Items</mat-label>
+        <mat-select #select multiple>
+          <mat-option
+            (click)="optionClick(food)"
+            *ngFor="let food of foods"
+            [value]="food.value"
+          >
+            {{ food.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div style="margin-top: 20px">
+        <ul>
+          <li
+            *ngFor="let item of selectedItems"
+            style="
+              font-size: 15px;
+              font-weight: 400;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 5px;
+              margin-left: -20px;
+            "
+          >
+            <div>{{ item.label }}</div>
+            <div style="display: flex; align-items: center">
+              <div style="margin-left: 40px">{{ item.price }}</div>
+              <span
+                style="
+                  border: 2px solid #0b69ff;
+                  border-radius: 10px;
+                  display: flex;
+                  align-items: center;
+                  margin-left: 10px;
+                  padding: 1px 8px;
+                  height: 25px;
+                "
+              >
+                <h6
+                  style="
+                    width: 15px;
+                    height: 15px;
+                    font-weight: 400;
+                    font-size: large;
+                    margin-top: 6px;
+                  "
+                  (click)="changeQuantity(item, 'decrease')"
+                >
+                  -
+                </h6>
+                <span style="align-items: center">{{ item.quantity }}</span>
+                <h6
+                  style="
+                    width: 15px;
+                    font-weight: 400;
+                    font-size: large;
+                    align-items: center;
+                    margin-top: 10px;
+                    margin-left: 5px;
+                  "
+                  (click)="changeQuantity(item, 'increase')"
+                >
+                  +
+                </h6>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="width: 50%; padding: 20px">
+    <div class="d-1" id="create-right">
+      <div class="delivery">
+        <h4 class="custom-s1">Delivery Details</h4>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-top: 30px;
+          "
+        >
+          <div class="orderdelivery">
+            <label style="color: gray">Order Items</label>
+            <span style="color: black"
+              ><ul>
+                <li *ngFor="let item of selectedItems">
+                  {{ item.label }}
+                </li>
+              </ul></span
+            >
+          </div>
+          <div class="orderdelivery">
+            <label style="color: gray">Number</label>
+            <span style="color: black"
+              ><ul>
+                <li *ngFor="let item of selectedItems">
+                  {{ item.quantity }}
+                </li>
+              </ul></span
+            >
+          </div>
+          <div class="orderdelivery">
+            <label style="color: gray">Cost</label>
+            <span style="color: black"
+              ><ul>
+                <li *ngFor="let item of selectedItems">
+                  {{ item.price }}
+                </li>
+              </ul></span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="totalamount1"
+        style="display: flex; justify-content: space-between"
+      >
+        <h5 class="custom-s2" style="font-weight: 500; font-size: 20px">
+          Total Amount:
+        </h5>
+        <h5 class="custom-s2" style="font-weight: 400; font-size: 20px">
+          {{ calculateTotalAmount() }}$
+        </h5>
+      </div>
+
+
+
+      <div id="buttons-1" class="buttons-2">
+        <button
+          *ngIf="formData.name === undefined || formData.contact === undefined || formData.message === undefined || selectedItems.length === 0; else enableButtons"
+          type="button"
+          style="width: 40%; height: 63px; margin-right: -155px; background: #2a71fa; color: white"
+          class="btn btn-success btn-lg bedri"
+          (click)="handleAdd()"
+        >
+          Add Order
+        </button> </div>
+        <ng-template #enableButtons>
+          <div class="buttons">
+          <div class="d-flex justify-content-between">
+            <button
+              type="button"
+              class="btn btn-outline-secondary btn-lg me-2 text-secondary"
+              id="graybutton"
+              (click)="handleCancel()"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-success btn-lg;"
+              id="greenbutton"
+              (click)="handleAdd()"
+            >
+              Add Order
+            </button>
+          </div>
+        </div>
+        </ng-template>
+
+    </div>
+  </div>
+</div>

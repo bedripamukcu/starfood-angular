@@ -1,0 +1,25 @@
+<div class="sidebar">
+  <h1 class="sidebar-header1">Orders</h1>
+  <div class="sidebar-content">
+    <ul class="sidebar-menu">
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.route" routerLinkActive="activeClicked">
+          <div class="menu-item">
+            <span
+              [style.color]="menuItemColors[item.key] ? '#007bff' : 'inherit'"
+              (mouseenter)="handleMouseEnter(item.key)"
+              (mouseleave)="handleMouseLeave(item.key)"
+              
+            >
+              {{ item.label }}
+            </span>
+            <span style="margin-right: 20px; color: gray;"
+            >
+              {{ item.number }}
+            </span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

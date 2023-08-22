@@ -1,0 +1,99 @@
+.order-info {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  margin-right: 5px;
+  gap: 20px;
+
+}
+
+.order-container {
+  font-size: 10px;
+  gap: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+
+
+.svg-a {
+  background: #ffffff;
+  border: 2px solid #e2e2e2;
+  padding: 0px;
+  margin: 30px 50px;
+  border-radius: 10px;
+  width: 1340px;
+  height: 278px;
+  margin-left: 85px;
+  margin-top: 40px;
+}
+
+.ordered {
+  margin-top: 20px;
+  font-size: 15px;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+
+}
+
+.messages {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 10px;
+
+}
+
+.order-value {
+  font-size: 18px;
+  color: black;
+  display: flex;
+  line-height: 21px;
+}
+
+
+.svg-b {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+
+}
+
+.details {
+  color: gray;
+  font-size: 17px;
+  font: SF Pro Display;
+  line-height: 20px;
+}
+@media (max-width: 1050px) {
+  .order-info {
+    font-size: 10px;
+  }
+
+  .order-container {
+    font-size: 10px;
+    margin-left: 0;
+    max-width: 600px;
+  }
+
+  .svg-a {
+    margin: 20px;
+    margin-left: 70px;
+    width: calc(100% - 40px);
+    height: auto; 
+  }
+}

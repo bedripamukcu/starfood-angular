@@ -1,0 +1,105 @@
+<section id="print-section">
+  <div>
+    <div *ngFor="let item of dataArray" class="svg-a">
+      <div class="svg-b">
+        <div class="order-info">
+          <h6 class="details">Order number</h6>
+          <h6 class="order-value">{{ item.orderNumber }}</h6>
+        </div>
+        <div class="order-info">
+          <h6 class="details">Date&Time</h6>
+          <h6 class="order-value">
+            {{ item.createdAt.toDate() | date : "yyyy-MM-dd HH:mm:ss" }}
+          </h6>
+        </div>
+        <div class="order-info">
+          <h6 class="details">Name</h6>
+          <h6 class="order-value">{{ item.name }}</h6>
+        </div>
+        <div class="order-info">
+          <h6>Trans Type</h6>
+          <button
+            *ngIf="item.type === 'Delivery'; else takeawayButton"
+            class="btn btn-primary btn-sm"
+            style="font-size: 15px; color: white"
+          >
+            Delivery
+          </button>
+          <ng-template #takeawayButton>
+            <button
+              class="btn btn-sm"
+              style="font-size: 15px; color: white; background-color: orange"
+            >
+              Takeaway
+            </button>
+          </ng-template>
+        </div>
+
+        <div class="order-info">
+          <h6 class="details">Amount</h6>
+          <h6 class="order-value">{{ item.total }}</h6>
+        </div>
+      </div>
+      <div class="ordered">
+        <h6
+          style="
+            color: gray;
+            font-size: 17px;
+            font: SF Pro Display;
+            line-height: 20px;
+          "
+        >
+          Ordered Items
+        </h6>
+        <h6
+          *ngFor="let xItem of item.selectedItems"
+          style="font-weight: bold; color: black"
+        >
+          {{ item.selectedItems }}
+        </h6>
+      </div>
+      <div class="messages">
+        <h6
+          style="
+            color: gray;
+            font-size: 17px;
+            font: SF Pro Display;
+            line-height: 20px;
+          "
+        >
+          Messages
+        </h6>
+      </div>
+      <div style="display: flex; align-items: center">
+        <span
+          style="font-weight: bold; margin-bottom: 5px; margin-left: 40px"
+          >{{ item.message }}</span
+        >
+        <svg
+          printSectionId="print-section"
+          ngxPrint
+          style="margin-left: auto; margin-right: 15px"
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          fill="currentColor"
+          class="bi bi-printer"
+          viewBox="0 0 16 16"
+          (click)="handleSvgClick()"
+        >
+          <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+          <path
+            d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"
+          />
+        </svg>
+        <button
+          class="btn btn-primary btn-sm"
+          style="margin-right: 20px"
+          (click)="handleMove(item.orderNumber)"
+        >
+          Move to {{ next_status }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
