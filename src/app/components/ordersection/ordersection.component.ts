@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Firebase } from 'src/app/services/firebase.service';
-import { SharedService } from 'src/app/services/sharedService.service';
+import { Firebase } from 'src/app/services/Firebase.service';
+import { SharedService } from 'src/app/services/SharedService.service';
 
 @Component({
   selector: 'app-ordersection',
@@ -15,9 +15,10 @@ export class OrdersectionComponent {
   transLabels = ["Delivery", "Takeaway"];
   selectedTransType: string = "Delivery";
 
-  constructor(private firebase: Firebase, private router: Router, private sharedService: SharedService){
-
-  }
+  constructor(
+    private firebase: Firebase,
+    private router: Router,
+    private sharedService: SharedService){}
 
   handleSvgClick() {
     const printContent = document.getElementById('print-section'); // Yazdırmak istediğiniz bölümün ID'si

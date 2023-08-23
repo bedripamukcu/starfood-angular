@@ -1,4 +1,4 @@
-import { Firebase } from '../../services/firebase.service';
+import { Firebase } from '../../services/Firebase.service';
 import { Component, } from '@angular/core';
 
 

@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Firebase } from './firebase.service';
+import { Firebase } from './Firebase.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

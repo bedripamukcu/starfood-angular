@@ -1,6 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
-import { Firebase } from 'src/app/services/firebase.service';
-import { SharedService } from 'src/app/services/sharedService.service';
+import { Firebase } from 'src/app/services/Firebase.service';
+import { SharedService } from 'src/app/services/SharedService.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +12,7 @@ export class SidebarComponent implements OnInit {
   public countList: number[] = [];
   constructor(
     private firebase: Firebase,
-    private sharedService: SharedService,
+    private SharedService: SharedService,
     private dataService: SharedService
   ) {}
   menuItems = [

@@ -1,11 +1,11 @@
-import { Firebase } from '../../services/firebase.service';
+import { Firebase } from '../../services/Firebase.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
 import { Router } from '@angular/router';
-import { SharedService } from 'src/app/services/sharedService.service';
+import { SharedService } from 'src/app/services/SharedService.service';
 
 @Component({
   selector: 'app-neworderpage',
@@ -18,21 +18,11 @@ export class NeworderpageComponent implements OnInit {
   showMissingFieldsMessage = false;
 
   foods: any[] = [
-    {
-      value: 'Beef Stroganoff',
-      label: 'Beef Stroganoff',
-      price: '20$',
-      quantity: 1,
-    },
+    {value: 'Beef Stroganoff',label: 'Beef Stroganoff',price: '20$',quantity: 1},
     { value: 'Salad', label: 'Salad', price: '24$', quantity: 1 },
     { value: 'Reuben', label: 'Reuben', price: '28$', quantity: 1 },
     { value: 'Sandwich', label: 'Sandwich', price: '24$', quantity: 1 },
-    {
-      value: 'Walldorf Salad',
-      label: 'Walldorf Salad',
-      price: '25$',
-      quantity: 1,
-    },
+    {value: 'Walldorf Salad',label: 'Walldorf Salad',price: '25$',quantity: 1},
     { value: 'French Fries', label: 'French Fries', price: '22$', quantity: 1 },
   ];
   formData = {
@@ -46,6 +36,12 @@ export class NeworderpageComponent implements OnInit {
     status: '',
     selectedItems: '[]',
   };
+
+  transLabels = ['Delivery', 'Takeaway'];
+  selectedType: string = 'Delivery';
+  inputValues: string[] = [];
+  checkForm: FormGroup;
+  selectedItems: any[] = [];
 
   constructor(
     private firebase: Firebase,
@@ -89,11 +85,6 @@ export class NeworderpageComponent implements OnInit {
     }
   }
 
-  transLabels = ['Delivery', 'Takeaway'];
-  selectedType: string = 'Delivery';
-  inputValues: string[] = [];
-  checkForm: FormGroup;
-  selectedItems: any[] = [];
 
   handleInputChange() {
     if (

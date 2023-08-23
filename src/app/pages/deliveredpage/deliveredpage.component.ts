@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firebase } from 'src/app/services/firebase.service';
+import { Firebase } from 'src/app/services/Firebase.service';
 
 @Component({
   selector: 'app-deliveredpage',

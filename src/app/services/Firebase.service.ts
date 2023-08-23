@@ -12,7 +12,7 @@ import {
   orderBy,
   limit,
 } from 'firebase/firestore/lite';
-import { SharedService } from './sharedService.service';
+import { SharedService } from './SharedService.service';
 
 @Injectable({
   providedIn: 'root',
