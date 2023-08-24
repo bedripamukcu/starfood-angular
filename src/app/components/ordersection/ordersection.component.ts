@@ -10,15 +10,16 @@ import { SharedService } from 'src/app/services/SharedService.service';
 })
 export class OrdersectionComponent {
   @Input() dataArray: any[] = [];
-  @Input() next_status: string = "";
+  @Input() next_status: string = '';
 
-  transLabels = ["Delivery", "Takeaway"];
-  selectedTransType: string = "Delivery";
+  transLabels = ['Delivery', 'Takeaway'];
+  selectedTransType: string = 'Delivery';
 
   constructor(
     private firebase: Firebase,
     private router: Router,
-    private sharedService: SharedService){}
+    private sharedService: SharedService
+  ) {}
 
   handleSvgClick() {
     const printContent = document.getElementById('print-section');
@@ -41,16 +42,14 @@ export class OrdersectionComponent {
   }
 
   async handleMove(orderNumber: number) {
+    if (this.next_status === '') return;
 
-    if( this.next_status=== '') return;
+    const isSuccessful = await this.firebase.updateStatus(
+      orderNumber,
+      this.next_status
+    );
 
-    const isSuccessful = await this.firebase.updateStatus(orderNumber, this.next_status);
-
-    this.sharedService.getUpdatedMenuItems() 
+    this.sharedService.getUpdatedMenuItems();
     this.router.navigate([`/${this.next_status}`]);
-
   }
-
-
-
 }

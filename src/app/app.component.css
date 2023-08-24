@@ -9,8 +9,7 @@ body {
   align-items: stretch;
 }
 
-.left-sidebar,
-.sidebar,
+
 .content-container {
   border: 0 solid #ccc;
   box-sizing: border-box;

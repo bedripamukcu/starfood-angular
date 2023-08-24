@@ -1,6 +1,7 @@
 .sidebar {
   display: flex;
-
+  border: 0 solid #ccc;
+  box-sizing: border-box;
   flex-direction: column;
   background-color: #e7e7e7;
   width: 309px;
