@@ -21,7 +21,7 @@ export class OrdersectionComponent {
     private sharedService: SharedService){}
 
   handleSvgClick() {
-    const printContent = document.getElementById('print-section'); // Yazdırmak istediğiniz bölümün ID'si
+    const printContent = document.getElementById('print-section');
     if (printContent) {
       const printWindow = window.open('', '_blank');
       printWindow!.document.open();
@@ -46,7 +46,7 @@ export class OrdersectionComponent {
 
     const isSuccessful = await this.firebase.updateStatus(orderNumber, this.next_status);
 
-    this.sharedService.getUpdatedMenuItems() //her redırect
+    this.sharedService.getUpdatedMenuItems() 
     this.router.navigate([`/${this.next_status}`]);
 
   }
