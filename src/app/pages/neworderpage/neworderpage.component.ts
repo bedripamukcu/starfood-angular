@@ -1,6 +1,11 @@
 import { Firebase } from '../../services/Firebase.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
@@ -17,12 +22,23 @@ export class NeworderpageComponent implements OnInit {
   allSelected = false;
   showMissingFieldsMessage = false;
 
+
   foods: any[] = [
-    {value: 'Beef Stroganoff',label: 'Beef Stroganoff',price: '20$',quantity: 1},
+    {
+      value: 'Beef Stroganoff',
+      label: 'Beef Stroganoff',
+      price: '20$',
+      quantity: 1,
+    },
     { value: 'Salad', label: 'Salad', price: '24$', quantity: 1 },
     { value: 'Reuben', label: 'Reuben', price: '28$', quantity: 1 },
     { value: 'Sandwich', label: 'Sandwich', price: '24$', quantity: 1 },
-    {value: 'Walldorf Salad',label: 'Walldorf Salad',price: '25$',quantity: 1},
+    {
+      value: 'Walldorf Salad',
+      label: 'Walldorf Salad',
+      price: '25$',
+      quantity: 1,
+    },
     { value: 'French Fries', label: 'French Fries', price: '22$', quantity: 1 },
   ];
   formData = {
@@ -42,17 +58,39 @@ export class NeworderpageComponent implements OnInit {
   inputValues: string[] = [];
   checkForm: FormGroup;
   selectedItems: any[] = [];
+  contactInvalid: boolean = false;
+  nameInvalid: boolean = false;
+  messageInvalid: boolean = false;
 
   constructor(
     private firebase: Firebase,
     private router: Router,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private builder: FormBuilder
   ) {
-    this.checkForm = new FormGroup({
-      name: new FormControl(''),
-      contact: new FormControl(''),
-    });
-  }
+
+      this.checkForm = this.builder.group({
+        name: [null, Validators.required],
+        contact: [null, Validators.required],
+        message: [null, Validators.required],
+        selectedItems: [null, Validators.required],
+      });
+
+      const formControls = ['name', 'contact', 'message'];
+
+      formControls.forEach(controlName => {
+        this.checkForm.get(controlName)?.statusChanges.subscribe(() => {
+          if (controlName === 'name') {
+            this.nameInvalid = this.checkForm.get(controlName)?.invalid || false;
+          } else if (controlName === 'contact') {
+            this.contactInvalid = this.checkForm.get(controlName)?.invalid || false;
+          } else if (controlName === 'message') {
+            this.messageInvalid = this.checkForm.get(controlName)?.invalid || false;
+          }
+        });
+      });
+    }
+
 
   ngOnInit(): void {
     (async () => {
@@ -83,8 +121,9 @@ export class NeworderpageComponent implements OnInit {
     } else {
       this.selectedItems.push(food);
     }
-  }
 
+    this.checkForm.get('selectedItems')?.setValue(this.selectedItems);
+  }
 
   handleInputChange() {
     if (
@@ -124,11 +163,11 @@ export class NeworderpageComponent implements OnInit {
         const selectedValues = this.selectedItems.map((item) => item.value);
         this.formData.selectedItems = JSON.stringify(selectedValues);
         this.formData.type = this.selectedType;
-        this.formData.orderNumber = statusCounts + 1; // orderNumber'ı formData'ya ekledik
+        this.formData.orderNumber = statusCounts + 1;
 
         const isSuccessful = await this.firebase.post(this.formData);
         if (isSuccessful) {
-          this.sharedService.getUpdatedMenuItems(); //her redırect
+          this.sharedService.getUpdatedMenuItems();
           this.selectedType = this.selectedType;
           alert('Sipariş başarıyla oluşturuldu');
 
@@ -154,9 +193,10 @@ export class NeworderpageComponent implements OnInit {
     this.selectedItems = [];
     this.formData.message = '';
     this.showMissingFieldsMessage = false;
-    this.formData.message = ''; // Message alanını sıfırla
+    this.formData.message = '';
     this.select.options.forEach((item: MatOption) => item.deselect());
   }
+
 
   changeQuantity(item: any, action: string) {
     const selectedItem = this.selectedItems.find((i) => i.value === item.value);
