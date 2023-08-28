@@ -1,3 +1,4 @@
+
 body {
   font-family: 'SF Pro Display', sans-serif;
   margin: 0;
@@ -9,45 +10,11 @@ body {
   align-items: stretch;
 }
 
-
 .content-container {
   border: 0 solid #ccc;
   box-sizing: border-box;
+  margin-left: 355px;
 }
 
-.left-sidebar {
-  flex: 0 0 85px;
-  height: 100vh;
-}
 
-.sidebar-container {
-  flex: 0 0 239px;
-  background-color: #e7e7e7;
-}
 
-.content-container {
-  flex: 1;
-  display: flex;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-@media (max-width: 1700px) {
-  .left-sidebar {
-    flex: 0 0 0;
-    display: none;
-  }
-
-  .sidebar-container {
-    flex: 0 0 100%;
-  }
-
-  .content-container {
-
-    margin-left: 250px;
-
-  }
-}

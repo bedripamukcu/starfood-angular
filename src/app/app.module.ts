@@ -36,6 +36,7 @@ import { environment } from '../environments/environment';
     DeliveredpageComponent,
     NeworderpageComponent,
     ParcelreadypageComponent,
+    
   ],
   imports: [
     BrowserModule,

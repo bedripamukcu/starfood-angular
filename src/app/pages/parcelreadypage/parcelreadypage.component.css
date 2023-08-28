@@ -36,7 +36,25 @@
   top: 115px
 }
 
-@media (max-width: 1050px) {
+.parcingshow {
+  background: #f7f7f7;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 75px;
+  width: 232px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.first-e{
+  margin-left: 80px
+}
+
+@media (max-width: 1720px) {
   .custom-header {
     font-size: 20px;
     margin-left: 20px;
@@ -44,7 +62,7 @@
 
   .custom-header-1 {
     font-size: 16px;
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .move-button {
@@ -53,10 +71,15 @@
   }
 
   .hr-item {
-    margin-left: 80px;
-    width: 500px;
+    margin-left: -55px;
+    width: 100%;
   }
-
+  .parcingshow {
+    margin-left:  -55px;
+  }
+  .first-e {
+    margin-left:  -55px;
+  }
 
   .order-1 {
     .svg-a {
@@ -67,7 +90,7 @@
       border-radius: 10px;
       width: 500px;
       height: 378px;
-      margin-left: 85px;
+      margin-left: -55px;
       margin-top: 40px;
     }
 

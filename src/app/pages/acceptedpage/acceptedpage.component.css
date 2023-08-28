@@ -48,40 +48,54 @@
 .t-section {
   display: flex; width: 100%; padding: 20px; margin-bottom: -50px
 }
+.first-e {
+  margin-left: 80px
+}
 
-@media (max-width: 1050px) {
-  .ordersection-1 {
-    margin-top: 20px;
-    margin-left: -130px;
-    
+
+@media (max-width: 1720px) {
+
+
+  .custom-header {
+    font-size: 20px;
+    margin-left: 20px;
   }
 
-  .svg-3, .d-flex.align-items-center.svg-3 {
-    margin-left: -80px;
+  .custom-header-1 {
+    font-size: 16px;
+    margin-left: 10px;
   }
 
   .move-button {
-    margin-left: 40px;
+    margin-left: 20px;
     margin-top: 14px;
   }
 
   .hr-item {
-    margin-left: -40px;
-    width: calc(100% - 40px);
+    margin-left: -55px;
+    width: 100%;
   }
 
-  .order-1 .svg-a {
-    width: calc(100% - 40px);
-    margin: 30px 20px;
-    height: auto;
+  .first-e {
+    margin-left:  -55px;
   }
-  .t-section{
-    margin-left: -120px;
-    overflow-x: hidden
+
+  .ordersection-1 {
+    .svg-a {
+      background: #ffffff;
+      border: 2px solid #e2e2e2;
+      border-radius: 10px;
+      width: 100%;
+      height: 100%;
+      margin-left: -55px;
+      margin-top: 40px;
+    }
   }
+
   .show-orders {
-    margin-left: -50px;
+    margin-left:  -55px;
   }
+
 }
 
 

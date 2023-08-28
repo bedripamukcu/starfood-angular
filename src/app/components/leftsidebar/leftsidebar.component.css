@@ -1,11 +1,12 @@
+
 .left-sidebar {
   position: fixed;
-  left: 1px;
+  left: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   background-color: #cacaca;
-  width: 4%;
+  width: 14%;
   height: 100vh;
   overflow-y: auto;
 }
@@ -14,15 +15,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: -10px;
-}
-
-.svg-container svg:first-child {
-  width: 100%;
-  height: 100%;
-  margin-bottom: 50px;
+  margin-left: 11px;
   margin-top: 14px;
 }
+
 
 .svg-container svg:not(:first-child) {
   width: 30px;
@@ -30,14 +26,3 @@
   margin-bottom: 50px;
 }
 
-@media (max-width: 768px) and (orientation: landscape) {
-  .left-sidebar {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) and (orientation: portrait) {
-  .left-sidebar {
-    display: none;
-  }
-}

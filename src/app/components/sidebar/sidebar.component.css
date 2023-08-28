@@ -4,11 +4,11 @@
   box-sizing: border-box;
   flex-direction: column;
   background-color: #e7e7e7;
-  width: 309px;
-  height: 1153px;
+  width: 17%;
+  height: 100%;
   top: 0;
   position: fixed;
-  margin-left: -9px;
+  margin-left: 85px;
 }
 
 .sidebar-header1 {
@@ -53,30 +53,3 @@ a.activeClicked {
   color: #007bff;
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
-    margin-left: 0;
-  }
-
-  .sidebar-header1 {
-    margin-left: 0;
-    text-align: left;
-    font-size: 24px;
-  }
-
-  .sidebar-content {
-    margin-left: 0;
-    font-size: 16px;
-
-  }
-}
-
-@media (max-width: 1700px) {
-  .sidebar {
-    width: auto;
-    overflow: hidden;
-  }
-}

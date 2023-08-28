@@ -7,28 +7,13 @@
 
 }
 
-.order-container {
-  font-size: 10px;
-  gap: 10px;
-  border-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 20px;
-  justify-content: space-between;
-  margin-left: 10px;
-}
-
 
 .svg-a {
   background: #ffffff;
   border: 2px solid #e2e2e2;
-  padding: 0px;
-  margin: 30px 50px;
   border-radius: 10px;
-  width: 1340px;
-  height: 278px;
+  width: 89%;
+  height: 100%;
   margin-left: 85px;
   margin-top: 40px;
 }
@@ -78,22 +63,4 @@
   font-size: 17px;
   font: SF Pro Display;
   line-height: 20px;
-}
-@media (max-width: 1050px) {
-  .order-info {
-    font-size: 10px;
-  }
-
-  .order-container {
-    font-size: 10px;
-    margin-left: 0;
-    max-width: 600px;
-  }
-
-  .svg-a {
-    margin: 20px;
-    margin-left: 70px;
-    width: calc(100% - 40px);
-    height: auto; 
-  }
 }
