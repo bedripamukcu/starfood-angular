@@ -9,6 +9,7 @@
   top: 0;
   position: fixed;
   margin-left: 85px;
+
 }
 
 .sidebar-header1 {
@@ -16,6 +17,8 @@
   text-align: center;
   margin-left: 29px;
   font-size: 30px;
+  margin-top: 36px;
+  font-weight: 500;
 
 }
 

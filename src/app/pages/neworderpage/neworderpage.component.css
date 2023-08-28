@@ -134,7 +134,7 @@
 
 .create-order-page {
   font-size: 25px;
-  font-weight: 500;
+  font-weight: 550;
   line-height: 36px;
   letter-spacing: 0em;
   text-align: left;
@@ -151,7 +151,7 @@
 
 .addorder1 {
   width: 40%;
-  height: 63px;
+  height: 50px;
   margin-right: -155px;
   background: #2a71fa;
   color: white;

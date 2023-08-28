@@ -14,7 +14,7 @@ export class OrdersectionComponent {
 
   transLabels = ['Delivery', 'Takeaway'];
   selectedTransType: string = 'Delivery';
-
+ 
   constructor(
     private firebase: Firebase,
     private router: Router,

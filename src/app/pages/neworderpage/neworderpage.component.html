@@ -210,6 +210,17 @@
           Add Order
         </button>
       </div>
+
+      <ng-container *ngIf="
+      formData.name === undefined ||
+      formData.contact === undefined ||
+      formData.message === undefined ||
+      selectedItems.length === 0;
+    ">
+      <div style=" margin-top: 20px; color: red;text-align: end ">
+        Please fill in all the required fields.
+      </div>
+    </ng-container>
       <ng-template #enableButtons>
 
         <div class="buttons">
@@ -231,6 +242,7 @@
             >
               Add Order
             </button>
+
           </div>
         </div>
       </ng-template>

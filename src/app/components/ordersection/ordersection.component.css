@@ -17,19 +17,26 @@
   margin-left: 85px;
   margin-top: 40px;
 }
-
-.ordered {
-  margin-top: 20px;
-  font-size: 15px;
-  color: gray;
+.ordered-container {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 30px;
-  margin-top: 10px;
-  margin-left: 40px;
-  margin-right: 40px;
+  align-items: center;
+  gap: 10px;
+}
+
+.order-label {
+  margin-left: 30px;
+  padding: 10px;
+}
+
+.ordered-item {
+  color: gray;
+  font-weight: bold;
+
+  border-radius: 15px;
+
 
 }
+
 
 .messages {
   display: flex;

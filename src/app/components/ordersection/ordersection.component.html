@@ -16,6 +16,11 @@
           <h6 class="details">Name</h6>
           <h6 class="order-value">{{ item.name }}</h6>
         </div>
+
+        <div class="order-info">
+          <h6 class="details">Contact</h6>
+          <h6 class="order-value">{{ item.contact }}</h6>
+        </div>
         <div class="order-info">
           <h6>Trans Type</h6>
           <button
@@ -40,24 +45,42 @@
           <h6 class="order-value">{{ item.total }}</h6>
         </div>
       </div>
-      <div class="ordered">
-        <h6
-          style="
-            color: gray;
-            font-size: 17px;
-            font: SF Pro Display;
-            line-height: 20px;
-          "
-        >
-          Ordered Items
-        </h6>
-        <h6
-          *ngFor="let xItem of item.selectedItems"
-          style="font-weight: bold; color: black"
-        >
-          {{ item.selectedItems }}
-        </h6>
+      <div class="ordered-container">
+        <div class="order-label">
+          <h6
+            style="
+              color: gray;
+              font-size: 17px;
+              line-height: 20px;
+              display: inline;
+            "
+          >
+            Ordered Items:&nbsp;
+          </h6>
+        </div>
+        <div class="ordered-items-container">
+          <div style="border: 1px solid #EBEBEB; padding: 5px; margin-top: 5px; border-radius: 5px; background: #EBEBEB;
+          ">
+            <div
+              style="
+                display: flex;
+                flex-wrap: wrap;
+              "
+            >
+              <div *ngFor="let selectedItem of item.selectedItems; let last = last">
+                <div
+                  class="ordered-item"
+                  [style.color]="'black'"
+                  [style.fontWeight]="'bold'"
+                >
+                  {{ selectedItem }}{{ !last ? ', ' : '' }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="messages">
         <h6
           style="
@@ -78,7 +101,7 @@
         <svg
           printSectionId="print-section"
           ngxPrint
-          style="margin-left: auto; margin-right: 15px"
+          style="margin-left: auto; margin-right: 15px; margin-bottom: 10px;"
           xmlns="http://www.w3.org/2000/svg"
           width="28"
           height="28"
@@ -94,7 +117,7 @@
         </svg>
         <button
           class="btn btn-primary btn-sm"
-          style="margin-right: 20px"
+          style="margin-right: 20px;margin-bottom: 10px"
           (click)="handleMove(item.orderNumber)"
         >
           Move to {{ next_status }}

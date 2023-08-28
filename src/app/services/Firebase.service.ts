@@ -29,13 +29,27 @@ export class Firebase {
         .where('status', '==', status)
         .get();
 
-      const orderList = querySnapshot.docs.map((doc: any) => {
+      let orderList = querySnapshot.docs.map((doc: any) => {
         const data = doc.data();
         data.id = doc.id;
         return data;
       });
 
       orderList.sort((a: any, b: any) => b.orderNumber - a.orderNumber);
+
+      let newOrderList = [];
+      for (const o of orderList) {
+        try {
+          const parsedItems = JSON.parse(o.selectedItems);
+          let newOrderItem = { ...o, selectedItems: parsedItems };
+          newOrderList.push(newOrderItem);
+        } catch (error) {
+          console.error('Error parsing selectedItems:', error);
+        }
+      }
+
+      orderList = newOrderList;
+
       return orderList;
     } catch (err) {
       console.error(err);
@@ -46,7 +60,6 @@ export class Firebase {
   async post(data: Order) {
     try {
       await this.ordersCollection.add(data);
-      // await addDoc(this.ordersCollection, data);
       return true;
     } catch (err) {
       console.error(err);
@@ -141,9 +154,7 @@ export class Firebase {
     }
   }
 
-
   async getLastOrderNum() {}
-
 }
 
 interface Order {
